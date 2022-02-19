@@ -107,11 +107,12 @@ def fill_modes(dims, sparsity, moving_modes, fixed_index):
     with open(sys.argv[1], 'w') as file:
         while(len(indexes) < nnz):
             gen_index = [0] * modes
+            temp = [0] * modes  #a list to hold randomly generated numbers
 
             temp = random.sample(range(dims[0]), k=len(moving_modes))
             for i in range(modes):
                 if(i in moving_modes):
-                    gen_index[i] = temp[i]
+                    gen_index[i] = temp.pop()
                 else:
                     gen_index[i] = fixed_index
 
@@ -137,7 +138,11 @@ def main():
 
     #gen_rand([10,10,10], 0.9)
     #fill_one_mode([100,100,100], 0.99, 1, 1)
-    fill_modes([20000,20000,20000],0.99,[0],1)
+
+    #Q. Does the hash favor flipping certain bits?
+    #fill_modes([20000,20000,20000],0.99,[0],1)
+    #fill_modes([20000,20000,20000],0.99,[1],1)
+    #fill_modes([20000,20000,20000],0.99,[2],1)
 
     print("Sparse tensor generated.")
 
