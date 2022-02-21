@@ -8,6 +8,10 @@ import datetime
 import numpy as np
 sys.path.append('../')
 
+# Returns true if x is in range [low..high], else false
+def inRange(low, high, x):
+    return  ((x-low) <= (high-low))
+
 #requires symmetrical dimensions
 def gen_rand(dims, sparsity):
     #create empty dictionary, composed of indexes
@@ -138,11 +142,12 @@ def fill_modes(dims, sparsity, moving_modes, fixed_index):
 
 #Parameters:
 # duplicate_mode: mode we want to copy over to other modes
-#mode_to_copy_to: mode we want to duplicate a mode to
-def duplicate_mode(dims, sparsity, moving_modes, fixed_index, duplicate_mode, mode_to_copy_to):
+# mode_to_copy_to: mode we want to duplicate a mode to
+# perturn: integer to slightly shift an index up or down if we don't want to exactly duplicate
+def duplicate_mode(dims, sparsity, moving_modes, fixed_index, duplicate_mode, mode_to_copy_to,perturb):
     indexes = fill_modes(dims, sparsity,moving_modes,fixed_index)
 
-    #new_indexes = indexes #new dictionary to hold additional entries
+    new_indexes = {}
 
     with open(sys.argv[1], 'a') as file:
         for key in indexes:
@@ -150,18 +155,22 @@ def duplicate_mode(dims, sparsity, moving_modes, fixed_index, duplicate_mode, mo
             #shift the non-fixed index to the mode we want to copy to
             for i in temp:
                 if i != fixed_index:
-                    temp[mode_to_copy_to] = i
+                    temp[mode_to_copy_to] = i+perturb
+
+                     #check if this number if in range of our indices
+                     if inRange(0, dims[0]-1, temp[mode_to_copy_to]==0):
+                         print('perturbed index is out of range')
                 temp[duplicate_mode] = fixed_index
             print(temp)
 
             #add to the indexes dictionary
             temp = tuple(temp)
-            #new_indexes[temp] = 1
+            new_indexes[temp] = 1
             file.write(' '.join(map(str, temp)))
             file.write(" 1\n")
 
-    #return new_indexes
-
+    #merge both dictionaries
+    return(new_indexes.update(indexes))
 
 def main():
 
@@ -174,7 +183,10 @@ def main():
     #fill_modes([20000,20000,20000],0.99,[2],1)
 
     #Q. What happens if a mode is duplicated onto another mode?
-    duplicate_mode([10,10,10],0.99, [0],1,0,1)
+    duplicate_mode([20000,20000,20000],0.99, [0],1,0,1,0)
+
+    #what happens if you perturb the copied mode slightly?
+    duplicate_mode([20000,20000,20000],0.99, [0],1,0,1,10)
 
     print("Sparse tensor generated.")
 
