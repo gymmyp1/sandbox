@@ -6,11 +6,15 @@ __pycache__/
 #Mac
 *.DS_Store
 
+#Excel
+*~$
+
 # C extensions
 *.so
 
 # Distribution / packaging
 .Python
+__init__.py
 build/
 develop-eggs/
 dist/

@@ -14,3 +14,4 @@ A. No. Each test resulted in the exact same collision rate, avg probe depth,
 and every other statistic we measured.
 
 Q. What happens if a mode is duplicated onto another mode?
+testb1: fix all but mode 0, copy entries to mode 1. 0.99 sparsity- fixed indices at 1

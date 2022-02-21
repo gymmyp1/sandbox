@@ -134,6 +134,35 @@ def fill_modes(dims, sparsity, moving_modes, fixed_index):
                     print('number of possible indexes reached.')
                     break
 
+    return indexes
+
+#Parameters:
+# duplicate_mode: mode we want to copy over to other modes
+#mode_to_copy_to: mode we want to duplicate a mode to
+def duplicate_mode(dims, sparsity, moving_modes, fixed_index, duplicate_mode, mode_to_copy_to):
+    indexes = fill_modes(dims, sparsity,moving_modes,fixed_index)
+
+    #new_indexes = indexes #new dictionary to hold additional entries
+
+    with open(sys.argv[1], 'a') as file:
+        for key in indexes:
+            temp = list(key)
+            #shift the non-fixed index to the mode we want to copy to
+            for i in temp:
+                if i != fixed_index:
+                    temp[mode_to_copy_to] = i
+                temp[duplicate_mode] = fixed_index
+            print(temp)
+
+            #add to the indexes dictionary
+            temp = tuple(temp)
+            #new_indexes[temp] = 1
+            file.write(' '.join(map(str, temp)))
+            file.write(" 1\n")
+
+    #return new_indexes
+
+
 def main():
 
     #gen_rand([10,10,10], 0.9)
@@ -143,6 +172,9 @@ def main():
     #fill_modes([20000,20000,20000],0.99,[0],1)
     #fill_modes([20000,20000,20000],0.99,[1],1)
     #fill_modes([20000,20000,20000],0.99,[2],1)
+
+    #Q. What happens if a mode is duplicated onto another mode?
+    duplicate_mode([10,10,10],0.99, [0],1,0,1)
 
     print("Sparse tensor generated.")
 
