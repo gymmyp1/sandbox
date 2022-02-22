@@ -15,7 +15,7 @@ and every other statistic we measured.
 
 Q. What happens if a mode is duplicated onto another mode?
 testb1: fix all but mode 0, copy all entries to mode 1. 0.99 sparsity- fixed indices at 1
-
+testb2: same as test b1, ([500000,500000,500000],0.99, [0],1,0,1,0)
 
 Q. What happens if a mode is duplicated onto another mode then perturbed slightly?
 testc1: same as testb1, but duplicated indices are perturbed by 100 (no change)

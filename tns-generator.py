@@ -200,11 +200,12 @@ def main():
 
     #Q. What happens if a mode is duplicated onto another mode?
     #duplicate_mode([20000,20000,20000],0.99, [0],1,0,1,0)
+    duplicate_mode([500000,500000,500000],0.99, [0],1,0,1,0)
 
     #what happens if you perturb the copied mode slightly?
     #duplicate_mode([20000,20000,20000],0.99, [0],1,0,1,100)
     #duplicate_mode([50000,50000,50000],0.99, [0],1,0,1,100)
-    duplicate_mode([50000,50000,50000,50000],0.99, [0],1,0,1,100)
+
 
     print("Sparse tensor generated.")
 
