@@ -18,4 +18,6 @@ testb1: fix all but mode 0, copy all entries to mode 1. 0.99 sparsity- fixed ind
 
 
 Q. What happens if a mode is duplicated onto another mode then perturbed slightly?
-testc1: same as testb1, but duplicated indices are perturbed by 1000
+testc1: same as testb1, but duplicated indices are perturbed by 100 (no change)
+testc2: same as testc1, but dims[50,000 50,000 50,000] (resulted in slight lowering of collisison rate)
+testc3: same as testc1, but dims[50,000 50,000 50,000 50,000] (resulted in very bad collision rate, avg probe depth)

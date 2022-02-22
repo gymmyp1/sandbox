@@ -1,0 +1,104 @@
+62500000000000000
+total possible indexes: 50000
+Total number of entries-  1000
+(34853, 1, 1, 1)
+Total number of entries-  2000
+(11644, 1, 1, 1)
+Total number of entries-  3000
+(48944, 1, 1, 1)
+Total number of entries-  4000
+(2197, 1, 1, 1)
+Total number of entries-  5000
+(45616, 1, 1, 1)
+Total number of entries-  6000
+(29549, 1, 1, 1)
+Total number of entries-  7000
+(3077, 1, 1, 1)
+Total number of entries-  8000
+(39151, 1, 1, 1)
+Total number of entries-  9000
+(33153, 1, 1, 1)
+Total number of entries-  10000
+(7572, 1, 1, 1)
+Total number of entries-  11000
+(22424, 1, 1, 1)
+Total number of entries-  12000
+(28635, 1, 1, 1)
+Total number of entries-  13000
+(12241, 1, 1, 1)
+Total number of entries-  14000
+(36056, 1, 1, 1)
+Total number of entries-  15000
+(12328, 1, 1, 1)
+Total number of entries-  16000
+(36145, 1, 1, 1)
+Total number of entries-  17000
+(39155, 1, 1, 1)
+Total number of entries-  18000
+(42891, 1, 1, 1)
+Total number of entries-  19000
+(32731, 1, 1, 1)
+Total number of entries-  20000
+(41663, 1, 1, 1)
+Total number of entries-  21000
+(49407, 1, 1, 1)
+Total number of entries-  22000
+(18080, 1, 1, 1)
+Total number of entries-  23000
+(26498, 1, 1, 1)
+Total number of entries-  24000
+(45567, 1, 1, 1)
+Total number of entries-  25000
+(8887, 1, 1, 1)
+Total number of entries-  26000
+(44576, 1, 1, 1)
+Total number of entries-  27000
+(45022, 1, 1, 1)
+Total number of entries-  28000
+(44194, 1, 1, 1)
+Total number of entries-  29000
+(10152, 1, 1, 1)
+Total number of entries-  30000
+(8375, 1, 1, 1)
+Total number of entries-  31000
+(20419, 1, 1, 1)
+Total number of entries-  32000
+(42682, 1, 1, 1)
+Total number of entries-  33000
+(6182, 1, 1, 1)
+Total number of entries-  34000
+(23884, 1, 1, 1)
+Total number of entries-  35000
+(1694, 1, 1, 1)
+Total number of entries-  36000
+(15165, 1, 1, 1)
+Total number of entries-  37000
+(13925, 1, 1, 1)
+Total number of entries-  38000
+(27868, 1, 1, 1)
+Total number of entries-  39000
+(44656, 1, 1, 1)
+Total number of entries-  40000
+(42557, 1, 1, 1)
+Total number of entries-  41000
+(12209, 1, 1, 1)
+Total number of entries-  42000
+(2691, 1, 1, 1)
+Total number of entries-  43000
+(10915, 1, 1, 1)
+Total number of entries-  44000
+(17073, 1, 1, 1)
+Total number of entries-  45000
+(32079, 1, 1, 1)
+Total number of entries-  46000
+(11783, 1, 1, 1)
+Total number of entries-  47000
+(46816, 1, 1, 1)
+Total number of entries-  48000
+(36312, 1, 1, 1)
+Total number of entries-  49000
+(33506, 1, 1, 1)
+Total number of entries-  50000
+(37213, 1, 1, 1)
+number of possible indexes reached.
+Sparse tensor generated.

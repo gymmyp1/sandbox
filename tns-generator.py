@@ -140,33 +140,49 @@ def fill_modes(dims, sparsity, moving_modes, fixed_index):
 
     return indexes
 
+#perturb index by an integer value and check if it's in range of indexes
+def perturb_index(dims, key, fixed_index, mode_to_copy_to,perturb):
+    gen_index = list(key)
+    #shift the non-fixed index to the mode we want to copy to
+    for i in gen_index:
+        if i != fixed_index:
+            perturbed_index = i+perturb
+
+            #force index to be in valid range of our indices
+            #check if this number if in range
+            if perturbed_index < 0 and perturbed_index > dim[0]-1:
+                #mod by dim[0]-1 to get it back in range
+                print("perturbed index out of range:", perturbed_index)
+                perturbed_index = perturbed_index % dim[0]-1
+                print('new perturbed index:', perturbed_index)
+
+            gen_index[mode_to_copy_to] = perturbed_index
+
+    return gen_index
+
 #Parameters:
 # duplicate_mode: mode we want to copy over to other modes
 # mode_to_copy_to: mode we want to duplicate a mode to
 # perturn: integer to slightly shift an index up or down if we don't want to exactly duplicate
 def duplicate_mode(dims, sparsity, moving_modes, fixed_index, duplicate_mode, mode_to_copy_to,perturb):
-    indexes = fill_modes(dims, sparsity,moving_modes,fixed_index)
+    indexes = fill_modes(dims, sparsity, moving_modes,fixed_index)
 
     new_indexes = {}
 
     with open(sys.argv[1], 'a') as file:
         for key in indexes:
-            temp = list(key)
-            #shift the non-fixed index to the mode we want to copy to
-            for i in temp:
-                if i != fixed_index:
-                    temp[mode_to_copy_to] = i+perturb
+            gen_index = perturb_index(dims, key, fixed_index, mode_to_copy_to, perturb)
+            gen_index[duplicate_mode] = fixed_index #replace old mode value with fixed index
+            gen_index = tuple(gen_index)  #convert back to tuple
 
-                     #check if this number if in range of our indices
-                     if inRange(0, dims[0]-1, temp[mode_to_copy_to]==0):
-                         print('perturbed index is out of range')
-                temp[duplicate_mode] = fixed_index
-            print(temp)
+            #check if perturbed index is already in our dictionary
+            while gen_index in new_indexes:
+                gen_index = list(gen_index) #convert to list and fix the perturbed index
+                gen_index[mode_to_copy_to] += 1
+                gen_index = tuple(temp_list) #convert back to tuple
 
-            #add to the indexes dictionary
-            temp = tuple(temp)
-            new_indexes[temp] = 1
-            file.write(' '.join(map(str, temp)))
+            new_indexes[gen_index] = 1
+            file.write(' '.join(map(str, gen_index)))
             file.write(" 1\n")
 
     #merge both dictionaries
@@ -183,10 +199,12 @@ def main():
     #fill_modes([20000,20000,20000],0.99,[2],1)
 
     #Q. What happens if a mode is duplicated onto another mode?
-    duplicate_mode([20000,20000,20000],0.99, [0],1,0,1,0)
+    #duplicate_mode([20000,20000,20000],0.99, [0],1,0,1,0)
 
     #what happens if you perturb the copied mode slightly?
-    duplicate_mode([20000,20000,20000],0.99, [0],1,0,1,10)
+    #duplicate_mode([20000,20000,20000],0.99, [0],1,0,1,100)
+    #duplicate_mode([50000,50000,50000],0.99, [0],1,0,1,100)
+    duplicate_mode([50000,50000,50000,50000],0.99, [0],1,0,1,100)
 
     print("Sparse tensor generated.")
 
