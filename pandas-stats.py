@@ -21,10 +21,13 @@ def main():
     #replace spaces with commas
     #import to pandas dataframe
     df = pd.DataFrame(indexes)
-    print(df.head())
+    #print(df.head())
 
-    corrMatrix = df.corr()
-    print (corrMatrix)
+    #corrMatrix = df.corr()
+    #print (corrMatrix)
+
+    #print variance of each column
+    print(df.var())
 
 
 
