@@ -31,7 +31,7 @@ for datum in data:
     counts[index] += 1
     if counts[index] > 1:
         collisions += 1
-        #print("colission at: ", index)
+        print("collision at: ", index)
 
 # compute the collision percent
 colrate = collisions / entries * 100

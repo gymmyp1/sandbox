@@ -12,8 +12,8 @@ import sptensor.morton as morton
 Returns:
     The list of decoded integers'''
 
-print(morton.decode(665986,3))
-print(morton.decode(1075509,3))
+print(morton.decode(827863656589,4))
+print(morton.decode(860075911309,4))
 
 #print(morton.encode(0,85,44))
 #print(bin(morton.encode(0,85,44)))

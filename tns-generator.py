@@ -8,10 +8,6 @@ import datetime
 import numpy as np
 sys.path.append('../')
 
-# Returns true if x is in range [low..high], else false
-def inRange(low, high, x):
-    return  ((x-low) <= (high-low))
-
 #requires symmetrical dimensions
 def gen_rand(dims, sparsity):
     #create empty dictionary, composed of indexes

@@ -33,9 +33,10 @@ x = int(math.ceil(bits/8)) - 1
 y = 4*x - 1
 z = int(math.ceil(bits/2))
 
-'''print('x=',x)
+print('nbuckets=', nbuckets)
+print('x=',x)
 print('y=',y)
-print('z=',z)'''
+print('z=',z)
 
 def hash(idx):
     """
