@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#
+uber-sim.txt
+analyze-uber-out.txt
+
 #Mac
 *.DS_Store
 

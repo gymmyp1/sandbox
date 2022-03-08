@@ -5,7 +5,9 @@ import os, sys, getopt
 import random
 import math
 import datetime
+from scipy import stats
 import numpy as np
+import statistics
 from collections import Counter
 sys.path.append('../')
 
@@ -33,7 +35,7 @@ def main():
                 print(row[i])
                 row.pop(i)'''
 
-            #nips/nell tensors
+            #nips/nell-2 tensors
             row.pop(2)
 
             #enron
@@ -59,27 +61,13 @@ def main():
                 indexes[curr_index] += 1
                 #print('repeat of index: ', curr_index)
 
-        highest_value = 0
-        avg = 0
-        for key, value in indexes.items():
-            if value > highest_value:
-                highest_value = value
-            avg += value
-
-        avg = avg/len(indexes)
-
-        #retrieve highest 5 values
-        top5avg = 0
-        top5 = dict(Counter(indexes).most_common(5))
-        print(top5)
-        #for value in top5.items():
-        #    top5avg += value
-
-        #top5avg = avg/5
-
-        print("overall average block density:",avg)
-        print("top5avg: ",top5avg)
-        print('highest block density:', highest_value)
+        #statistics of the values in dictionary
+        list_vals = list(indexes.values())
+        print("overall mean:",np.array(list_vals).mean())
+        print("median:",statistics.median(list_vals))
+        print("mode:", statistics.mode(list_vals))
+        print("std deviation:",np.array(list_vals).std())
+        print('highest block density:', max(list_vals))
 
         #should plot this...
 
