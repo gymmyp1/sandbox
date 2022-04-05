@@ -15,73 +15,12 @@ class hash_t:
 		#initialize the index hash
 		self.hash_init(NBUCKETS)
 
-		#iterators
-		#self.dense = iter(self.dense_itr(self))
-		#self.nnz = iter(self.nnz_itr(self))
-
 		#sptensor fields
 		self.modes = modes
 		if modes:
 			self.nmodes = len(modes)
 		else:
 			self.nmodes = 0
-
-	'''Dense and non-zero iterator classes
-	'''
-	'''class dense_itr:
-		def __init__(self, hash_type):
-			self.table = hash_type.table
-			self.nbuckets = hash_type.nbuckets
-
-		def __iter__(self):
-			self.bi = 0		#current bucket index
-			self.li = 0		#current index in list
-			return self
-
-		def __next__(self):
-
-			while self.bi < self.nbuckets:
-				if self.table[self.bi] == None:
-					self.bi += 1
-					continue
-					print('bi = ',self.bi)
-					print('li = ',self.li)
-
-				self.v = self.table[self.bi][self.li][1]
-				self.li += 1
-
-				#Are we at the end of the list?
-				if self.li == len(self.table[self.bi]):
-					self.li = 0
-					self.bi += 1
-
-				return self.v
-			else:
-				raise StopIteration
-
-	class nnz_itr:
-		def __init__(self, hash_type):
-			self.hashtable = hash_type.hashtable
-			self.nbuckets = hash_type.hashtable.nbuckets
-
-		def __iter__(self):
-			self.a = self.hashtable.value[0]
-			self.i = 0
-			return self
-
-		def __next__(self):
-			if self.i < self.nbuckets:
-				#find the next non-zero value
-				while self.hashtable.value[self.i] == 0.0:
-					self.i += 1
-					if self.i == self.nbuckets-1:
-						raise StopIteration
-
-				self.a = self.hashtable.value[self.i]
-				self.i += 1
-				return self.a
-			else:
-				raise StopIteration '''
 
 	#Function to insert an element in the hash table. Return the hash item if found, 0 if not found.
 	def set(self, i, v):
@@ -173,7 +112,7 @@ class hash_t:
 		self.num_collisions=0
 		self.max_chain_depth=0
 		self.probe_time=0
-		
+
 		'''print('sx =', self.sx)
 		print('sy =', self.sy)
 		print('sz =', self.sz)
@@ -195,12 +134,12 @@ class hash_t:
 		hash ^= hash >> self.sy
 		hash += hash << self.sz
 		k = hash % self.nbuckets
-		
+
 		#print('hash << sx= ', hash)
 		#print('hash << sy= ', hash)
 		#print('hash << sz= ', hash)
-		#print("k=",k);
-		
+		print("k=",k);
+
 		return k
 
 
@@ -362,7 +301,7 @@ def read(file):
 	with open(file, 'r') as reader:
 		# Create the tensor
 		tns = hash_t()
-		
+
 		for row in reader:
 			row = row.split()
 			# Get the value

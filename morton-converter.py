@@ -12,10 +12,9 @@ import sptensor.morton as morton
 Returns:
     The list of decoded integers'''
 
-print(morton.decode(827863656589,4))
-print(morton.decode(860075911309,4))
+morton = morton.encode(1,8,16,1)
+print(morton)
+print(bin(morton))
+print("key = ",int(101001000101010110101100101101101)%8388608)
 
-#print(morton.encode(0,85,44))
-#print(bin(morton.encode(0,85,44)))
-
-#print(morton.encode([1,18,95]))
+#print(morton.decode(morton,4))
